@@ -1,0 +1,18 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment[en_GB]=
+Comment=
+Exec=knux -id %u
+GenericName[en_GB]=Command line mod manager and one click mod installer for Sonic 3 AIR
+GenericName=Command line mod manager and one click mod installer for Sonic 3 AIR
+Icon=system-run
+MimeType=
+Name[en_GB]=Knux One Click Installer
+Name=Knux One Click Installer
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
