@@ -11,8 +11,8 @@ loaderMode.add_argument("-i", "--install", dest="mod_url", help="Installs a mod 
 loaderMode.add_argument("-id", "--install-dialog", dest="mod_url_dialog", help="Installs a mod from a specified URL. This makes the script use tkinter dialogs instead of CLI inputs and is meant to be called for one-click installs.")
 loaderMode.add_argument("-r", "--remove", dest="folder_to_delete", help="Deletes the specified mod based on folder name.", type=str)
 loaderMode.add_argument("-l", "--list", action="store_true", help="Lists the folder names of all currently installed mods.")
-loaderMode.add_argument("-e","--enable", dest="folder_to_enable", help="Enables the specified mod based on folder name.", type=str)
 """
+loaderMode.add_argument("-e","--enable", dest="folder_to_enable", help="Enables the specified mod based on folder name.", type=str)
 loaderMode.add_argument("-d", "--disable", dest="folder_to_disable", help="Disables the specified mod based on folder name.", type=str)
 loaderMode.add_argument("-u", "--update", dest="folder_to_update", help="Updates the specified mod based on folder name. Leave blank to scan all mods for update", type=str)
 loaderMode.add_argument("-U", "--update-all", action="store_true", help="Scans all installed mods (with the exception of those in the ignore file) for updates.")
@@ -35,24 +35,26 @@ def getModPath():
             #return os.path.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
 
 
-            nativePath = os.path.exists(os.path.expanduser('~/.local/share/Sonic3AIR/mods'))
+            nativePath = os.path.expanduser('~/.local/share/Sonic3AIR/mods')
             flatpakPath = os.path.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
 
-            if args.mod_url_dialog:
-                print("""
+            if os.path.exists(nativePath) and os.path.exists(nativePath):
+            
+                if args.mod_url_dialog:
+                    print("""
                     It seems that both the native and Flatpak versions of Sonic 3 AIR have been installed on your system.
 
                     You can change your settings in the configuration file (NOTE TO SELF: Not actually implemented yet)
 
                     """)
 
-            else:
-                print("""
-                    It seems that both the native and Flatpak versions of Sonic 3 AIR have been installed on your system.
+                else:
+                    print("""
+                        It seems that both the native and Flatpak versions of Sonic 3 AIR have been installed on your system.
 
-                    You can change your settings in the configuration file (NOTE TO SELF: Not actually implemented yet)
+                        You can change your settings in the configuration file (NOTE TO SELF: Not actually implemented yet)
 
-                    """)
+                        """)
 
             return os.path.expanduser('~/.local/share/Sonic3AIR/mods') # Placeholder behaviour. There should be a dialogue box
 
@@ -113,19 +115,21 @@ if args.mod_url or args.mod_url_dialog: # If the script is set to installer mode
     except:
         print("Could not import py7zr. 7Z files cannot extracted")
         print("py7zr can be found here: https://pypi.org/project/py7zr/")
+        print("If you do not want 7Z extraction support, this message can be disabled in the config.")
         loadIssues = True
 
     try:
         import rarfile # No hate on the makers of this library (hate on the makers of RAR instead), but I honestly think RAR is a bad format because it isn't open source like 7Z is.
     except:
-        print("Could not import rarfile. RAR files cannot extracted")
+        print("Could not import rarfile. RAR files cannot be extracted")
         print("rarfile can be found here: https://pypi.org/project/rarfile/")
-        print("You will also need to install unrar or unar.")
+        print("You will also need to install a rarfile-supported RAR extraction backend.")
         print("Note that RAR is a terrible proprietary format that nobody likes and is only included for full GameBanana support. This message can be disabled in the config.")
         loadIssues = True
 
     if loadIssues == True:
-        input("Some extraction libraries are missing. Are you sure you would like to continue?")
+        if lower(input("Some extraction libraries are missing. Are you sure you would like to continue? (y/n) ")) != "y":
+            print("Load canceled.")
 
     if args.mod_url_dialog:
         import tkinter
@@ -303,7 +307,10 @@ elif args.folder_to_delete:
     else:
         print(f"Mod folder '{args.folder_to_delete}' not found.")
 
+else:
+    print("No arguments specified! Run knux -h for more information.")
 
+"""
 elif args.folder_to_enable:
     import json
 
@@ -312,10 +319,7 @@ elif args.folder_to_enable:
     print(json.dumps(modDotJson.read()))
 
 # If you use WinRAR then I am very ashamed of you.
-
-else:
-    print("No arguments specified! Run knux -h for more information.")
-
+"""
 
 # Russian Shadow my beloved
 
