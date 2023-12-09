@@ -18,7 +18,7 @@ This project is licensed under the MIT License. This will be changed if one of t
  - Can install mods via the command line  
  - Optional extraction of ZIP files  
  - Automatic extraction of RAR and 7Z files if compatible libraries are installed.__
- - Works on Linux  
+ - Works on Linux and Windows  
  - A working one-click installer for `knux:` URLs (a HTML file with example URLs and a sample `.desktop` file for Linux is in the `bonuses` folder)  
 
 ### INSTALLATION
@@ -58,7 +58,6 @@ Optional:
 ### TODO LIST:
 
 #### Absolutely Mandatory:  
- - Windows Support  
  - A configuration file (example in the `bonuses` folder)__
 
 #### Would be nice to have
