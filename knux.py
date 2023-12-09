@@ -34,6 +34,7 @@ def getModPath():
         if platform.system() == "Linux": # For us pros who use Linux
             #return posixpath.expanduser('~/.local/share/Sonic3AIR/mods')
             #return posixpath.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
+            print("Using Linux")
 
 
             nativePath = posixpath.expanduser('~/.local/share/Sonic3AIR/mods')
@@ -60,8 +61,9 @@ def getModPath():
             return posixpath.expanduser('~/.local/share/Sonic3AIR/mods') # Placeholder behaviour. There should be a dialogue box
 
 
-
-        #if platform.system() == "Windows": # For the silly people who still use Windows
+        if platform.system() == "Windows": # For the silly people who still use Windows
+            print("Using Windows")
+            return posixpath.expandvars("%appdata%/AppData/Roaming\Sonic3AIR\mods")
 
         #if platform.system() == "Darwin": # For the weirdos who use Mac
 
