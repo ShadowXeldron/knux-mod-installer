@@ -60,7 +60,8 @@ Optional:
  - A configuration file (example in the `bonuses` folder)__
 
 #### Would be nice to have
- - A proper GUI for the installer mode  
+ - A proper GUI for the installer mode
+ - Mac support
  - Other mod management things, for example mod updates, enabling and disabling mods  
  - Possibly make an LPGL version that ommits py7zr support as that may cause licensing complications  
  - Automatic mod updates. This may be a sizable logistical issue.  
