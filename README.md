@@ -1,5 +1,5 @@
 # Knux - A command-line mod installer for Sonic 3 Angel Island Revisited
-## This program is a work-in-progress. DOn't expect it to work
+## This program is a work-in-progress. Don't expect it to work as expected
 
 ShadowXeldron's terrible ***AND VERY UNFINISHED*** command line-based [Sonic 3 AIR](https://github.com/Eukaryot/sonic3air) mod installer, created by strapping some snakes together
 
