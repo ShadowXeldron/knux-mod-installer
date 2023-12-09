@@ -63,7 +63,7 @@ def getModPath():
 
         if platform.system() == "Windows": # For the silly people who still use Windows
             print("Using Windows")
-            return posixpath.expandvars("%appdata%/AppData/Roaming\Sonic3AIR\mods")
+            return posixpath.expandvars("%appdata%/AppData/Roaming/Sonic3AIR/mods")
 
         #if platform.system() == "Darwin": # For the weirdos who use Mac
 
