@@ -1,6 +1,8 @@
 # Knux - A command-line mod installer for Sonic 3 Angel Island Revisited
 ## This program is a work-in-progress. Don't expect it to work as expected
 
+**This utility is unaffiliated with any "faction" of the S3AIR community. Please do not use it to bash other tools, users or websites.**
+
 ShadowXeldron's terrible ***AND VERY UNFINISHED*** command line-based [Sonic 3 AIR](https://github.com/Eukaryot/sonic3air) mod installer, created by strapping some snakes together
 
 This exists for a few reasons:
