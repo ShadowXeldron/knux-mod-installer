@@ -2,7 +2,9 @@
 # The above line is used to tell Linux to run this script with Python so you can call it right from the command line. How very convenient!
 
 import os
+import posixpath
 import argparse
+import platform
 
 # Commented arguments are unimplemented and do nothing.
 parser = argparse.ArgumentParser()
@@ -25,20 +27,19 @@ args = parser.parse_args()
 #modurl = sys.argv[0]
 
 def getModPath():
-        import platform
 
         s3airPath = ""
 
         print(platform.system())
         if platform.system() == "Linux": # For us pros who use Linux
-            #return os.path.expanduser('~/.local/share/Sonic3AIR/mods')
-            #return os.path.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
+            #return posixpath.expanduser('~/.local/share/Sonic3AIR/mods')
+            #return posixpath.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
 
 
-            nativePath = os.path.expanduser('~/.local/share/Sonic3AIR/mods')
-            flatpakPath = os.path.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
+            nativePath = posixpath.expanduser('~/.local/share/Sonic3AIR/mods')
+            flatpakPath = posixpath.expanduser('~/.var/app/org.sonic3air.Sonic3AIR/data/Sonic3AIR/mods/')
 
-            if os.path.exists(nativePath) and os.path.exists(nativePath):
+            if posixpath.exists(nativePath) and posixpath.exists(nativePath):
             
                 if args.mod_url_dialog:
                     print("""
@@ -50,13 +51,13 @@ def getModPath():
 
                 else:
                     print("""
-                        It seems that both the native and Flatpak versions of Sonic 3 AIR have been installed on your system.
+                    It seems that both the native and Flatpak versions of Sonic 3 AIR have been installed on your system.
 
-                        You can change your settings in the configuration file (NOTE TO SELF: Not actually implemented yet)
+                    You can change your settings in the configuration file (NOTE TO SELF: Not actually implemented yet)
 
-                        """)
+                    """)
 
-            return os.path.expanduser('~/.local/share/Sonic3AIR/mods') # Placeholder behaviour. There should be a dialogue box
+            return posixpath.expanduser('~/.local/share/Sonic3AIR/mods') # Placeholder behaviour. There should be a dialogue box
 
 
 
@@ -142,9 +143,9 @@ if args.mod_url or args.mod_url_dialog: # If the script is set to installer mode
 
     print(s3airmodpath)
 
-    if os.path.exists(s3airmodpath) == True: # Checks if the folder for Sonic 3 AIR has been found
+    if posixpath.exists(s3airmodpath) == True: # Checks if the folder for Sonic 3 AIR has been found
         print("Mods folder found!")
-        if not os.path.exists(f"{s3airmodpath}/knux-installs"):
+        if not posixpath.exists(f"{s3airmodpath}/knux-installs"):
             os.makedirs(f"{s3airmodpath}/knux-installs")
             print(f"Created installation folder at {s3airmodpath}/knux-installs")
         else:
@@ -186,7 +187,7 @@ if args.mod_url or args.mod_url_dialog: # If the script is set to installer mode
 
         while hasAName == False:
             tryname = f"knux-download-{modno}"
-            if not os.path.exists(f"{s3airmodpath}/knux-installs/{tryname}") and not os.path.exists(f"{s3airmodpath}/knux-installs/extracted-{tryname}") and not os.path.exists(f"{s3airmodpath}/knux-installs/{tryname}.zip"):
+            if not posixpath.exists(f"{s3airmodpath}/knux-installs/{tryname}") and not posixpath.exists(f"{s3airmodpath}/knux-installs/extracted-{tryname}") and not posixpath.exists(f"{s3airmodpath}/knux-installs/{tryname}.zip"):
                 modname = tryname
                 hasAName = True
             else:
@@ -288,8 +289,8 @@ elif args.list:
 
     print("Installed mods:") # TODO: Make this also count mods in subdirectories
     for counter in pdir_list:
-        if os.path.isdir(f"{modpath}/{counter}"):
-            if os.path.exists(f"{modpath}/{counter}/mod.json"): # Maybe something else would be a bit more optimal
+        if posixpath.isdir(f"{modpath}/{counter}"):
+            if posixpath.exists(f"{modpath}/{counter}/mod.json"): # Maybe something else would be a bit more optimal
                 print(counter)
                 modcount += 1
 
@@ -299,7 +300,7 @@ elif args.folder_to_delete:
     import shutil
     modpath = getModPath()
 
-    if os.path.isdir(f"{modpath}/{args.folder_to_delete}"):
+    if posixpath.isdir(f"{modpath}/{args.folder_to_delete}"):
         if input(f"\033[1mTHIS WILL DELETE THE MOD '{args.folder_to_delete}'! Are you sure that you want to delete this mod? (y/n): ") == "y":
             print("\033[0mDeleting mod...")
             shutil.rmtree(f"{modpath}/{args.folder_to_delete}")
