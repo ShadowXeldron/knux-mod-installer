@@ -7,7 +7,7 @@ This exists for a few reasons:
 
 1. To enable quick and easy installation of Sonic 3 AIR mods with only a few clicks on **ANY** website
 2. To encourage forum users to switch to using GitHub
-3. To create an alternative to [A.I.R.drop](https://github.com/TekkaGB/A.I.R.drop) that works on any platform (currently this only works on Linux; Mac and Windows hopefull won't be to difficult) and isn't locked to GameBanana
+3. To create an alternative to [A.I.R.drop](https://github.com/TekkaGB/A.I.R.drop) that works on any platform (currently this script only works on Linux; Mac and Windows hopefull won't be to difficult) and isn't locked to GameBanana
 
 This project is licensed under the MIT License. This will be changed if one of the libraries used makes that unfeasible and no alternative can be found.
 
