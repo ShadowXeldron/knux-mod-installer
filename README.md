@@ -1,4 +1,5 @@
 # Knux - A command-line mod installer for Sonic 3 Angel Island Revisited
+[![FOSSA Status](https://app.fossa.com/api/projects/custom%2B42139%2Fgithub.com%2FShadowXeldron%2Fknux-mod-installer.svg?type=shield&issueType=license)](https://app.fossa.com/projects/custom%2B42139%2Fgithub.com%2FShadowXeldron%2Fknux-mod-installer?ref=badge_shield&issueType=license)
 ## This program is a work-in-progress. Don't expect it to work as expected
 
 **This utility is unaffiliated with any "faction" of the S3AIR community. Please do not use it to bash other tools, users or websites.**
